@@ -29,6 +29,7 @@ def gaussian_likelihood(x, mu, log_std):
     #   YOUR CODE HERE    #
     #                     #
     #######################
+    # test
     gaussian = -0.5 * (((x-mu)/(tf.exp(log_std)+EPS))**2 + 2*log_std + np.log(2*np.pi))
 
     #-1/2 * (((x-mu)**2)/(tf.exp(log_std)+EPS)**2) + 2*log_std + np.log(2*np.pi)
