@@ -12,6 +12,7 @@ distributions, and returns a Tensorflow symbol for computing the log
 likelihoods of those samples.
 
 """
+EPS=1e-8
 
 def gaussian_likelihood(x, mu, log_std):
     """
@@ -28,7 +29,11 @@ def gaussian_likelihood(x, mu, log_std):
     #   YOUR CODE HERE    #
     #                     #
     #######################
-    return tf.constant(0)
+    gaussian = -0.5 * (((x-mu)/(tf.exp(log_std)+EPS))**2 + 2*log_std + np.log(2*np.pi))
+
+    #-1/2 * (((x-mu)**2)/(tf.exp(log_std)+EPS)**2) + 2*log_std + np.log(2*np.pi)
+    return tf.reduce_sum(gaussian, axis=1)
+    #return tf.constant(0)
 
 
 if __name__ == '__main__':
